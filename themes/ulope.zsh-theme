@@ -7,7 +7,7 @@ function prompt_char {
 }
 
 function virtualenv_info {
-    [ $VIRTUAL_ENV ] && echo ' ⊙ '$(basename $VIRTUAL_ENV)' '
+    [ $VIRTUAL_ENV ] && echo " ⊙ %{$fg[cyan]%}"$(basename $VIRTUAL_ENV)"%{$reset_color%}"
 }
 
 PROMPT='
