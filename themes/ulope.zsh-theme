@@ -11,7 +11,7 @@ function virtualenv_info {
 }
 
 function version_info {
-    VERSION=$(grep "current_version =" (../)#setup.cfg(N:a) | sed -e "s/current_version = //")
+    VERSION=$([ ! -z (../)#setup.cfg(N:a) ] && grep "current_version =" (../)#setup.cfg(N:a) | sed -e "s/current_version = //")
     [ ! -z $VERSION ] && echo "%{$fg[orange]%} v${VERSION}%{$reset_color%}"
 }
 
