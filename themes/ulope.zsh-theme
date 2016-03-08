@@ -11,8 +11,8 @@ function virtualenv_info {
 }
 
 function version_info {
-    VERSION=$([ ! -z (../)#setup.cfg(N:a) ] && grep "current_version =" (../)#setup.cfg(N:a) | sed -e "s/current_version = //")
-    [ ! -z $VERSION ] && echo "%{$fg[orange]%} v${VERSION}%{$reset_color%}"
+    VERSION=$([ ! -z (../)#setup.cfg(N:a) ] && grep -q "bumpversion" (../)#setup.cfg(N:a) && git describe --tags)
+    [ ! -z $VERSION ] && echo "%{$FG[202]%} ${VERSION}%{$reset_color%}"
 }
 
 VCS_CHAR="$(vcs_char)"
