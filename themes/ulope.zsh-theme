@@ -16,11 +16,10 @@ function version_info {
 }
 
 PROMPT='
-%{$fg[magenta]%}%n%{$reset_color%}@%{$fg[yellow]%}%m%{$reset_color%} %{$fg_bold[green]%}${PWD/#$HOME/~}%{$reset_color%}$(git_prompt_info)$(version_info)$(virtualenv_info)
+%{$fg[magenta]%}%n%{$reset_color%}@%{$fg[yellow]%}%m%{$reset_color%} %{$fg_bold[green]%}${PWD/#$HOME/~}%{$reset_color%}$(git_super_status)$(version_info)$(virtualenv_info)
 $(vcs_char) '
 
-ZSH_THEME_GIT_PROMPT_PREFIX=" %{$fg[blue]%}$(vcs_char) %{$fg[magenta]%}"
+RPROMPT=""
+
+ZSH_THEME_GIT_PROMPT_PREFIX=' %{$fg[blue]%}$(vcs_char) %{$fg[magenta]%}'
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[green]%}!"
-ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[green]%}?"
-ZSH_THEME_GIT_PROMPT_CLEAN=""
