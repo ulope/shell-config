@@ -21,5 +21,6 @@ $(vcs_char) '
 
 RPROMPT=""
 
-ZSH_THEME_GIT_PROMPT_PREFIX=' %{$fg[blue]%}$(vcs_char) %{$fg[magenta]%}'
+ZSH_THEME_GIT_PROMPT_PREFIX=" "
+ZSH_THEME_GIT_PROMPT_BRANCH="%{$fg[magenta]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
