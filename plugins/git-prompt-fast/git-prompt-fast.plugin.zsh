@@ -87,7 +87,7 @@ function update_current_git_vars() {
       fi
     fi
 
-    GIT_BRANCH=$branch
+    GIT_BRANCH=$BRANCH
     GIT_AHEAD=$num_ahead
     GIT_BEHIND=$num_behind
     _GIT_STATUS=1
