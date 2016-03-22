@@ -7,7 +7,16 @@ function vcs_char {
 }
 
 function virtualenv_info {
-    [ $VIRTUAL_ENV ] && echo " ⊙ %{$fg[cyan]%}"$(basename $VIRTUAL_ENV)"%{$reset_color%}"
+    if [ $VIRTUAL_ENV ]; then
+        echo -n " ⊙ %{$fg[cyan]%}"$(basename $VIRTUAL_ENV)
+        if [ -e $VIRTUAL_ENV/lib ]; then
+            echo -n "@"$(echo ${VIRTUAL_ENV}/lib/python* | sed -e "s#.*/lib/python##")
+        fi
+        if [ -e $VIRTUAL_ENV/lib_pypy ]; then
+            echo -n "@pypy"$(basename ${VIRTUAL_ENV}/lib-python/*)
+        fi
+        echo "%{$reset_color%}"
+    fi
 }
 
 function version_info {
