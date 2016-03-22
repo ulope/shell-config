@@ -10,10 +10,10 @@ function virtualenv_info {
     if [ $VIRTUAL_ENV ]; then
         echo -n " ⊙ %{$fg[cyan]%}"$(basename $VIRTUAL_ENV)
         if [ -e $VIRTUAL_ENV/lib ]; then
-            echo -n "@"$(echo ${VIRTUAL_ENV}/lib/python* | sed -e "s#.*/lib/python##")
+            echo -n "%{$reset_color%}@%{$FG[141]%}"$(echo ${VIRTUAL_ENV}/lib/python* | sed -e "s#.*/lib/python##")
         fi
         if [ -e $VIRTUAL_ENV/lib_pypy ]; then
-            echo -n "@pypy"$(basename ${VIRTUAL_ENV}/lib-python/*)
+            echo -n "%{$reset_color%}@%{$FG[141]%}pypy"$(basename ${VIRTUAL_ENV}/lib-python/*)
         fi
         echo "%{$reset_color%}"
     fi
