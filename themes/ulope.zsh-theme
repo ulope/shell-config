@@ -20,7 +20,7 @@ function virtualenv_info {
 }
 
 function version_info {
-    VERSION=$([ ! -z (../)#setup.cfg(N:a) ] && grep -q "bumpversion" (../)#setup.cfg(N:a) && git describe --tags)
+    VERSION=$([ ! -z (../)#setup.cfg(N:a) ] && grep -q "bumpversion" (../)#setup.cfg(N:a) && git describe --tags --always 2> /dev/null)
     [ ! -z $VERSION ] && echo "%{$FG[202]%} ${VERSION}%{$reset_color%}"
 }
 
