@@ -24,13 +24,9 @@ function version_info {
     [ ! -z $VERSION ] && echo "%{$FG[202]%} ${VERSION}%{$reset_color%}"
 }
 
-# PROMPT='
-# %{$fg[magenta]%}%n%{$reset_color%}@%{$fg[yellow]%}%m%{$reset_color%} %{$fg_bold[green]%}${PWD/#$HOME/~}%{$reset_color%}$(git_super_status)$(version_info)$(virtualenv_info)
-# $(iterm2_prompt_mark)$(vcs_char) '
-
 PROMPT='
 %{$fg[magenta]%}%n%{$reset_color%}@%{$fg[yellow]%}%m%{$reset_color%} %{$fg_bold[green]%}${PWD/#$HOME/~}%{$reset_color%}$(git_super_status)$(version_info)$(virtualenv_info)
-$(vcs_char) '
+%{$(iterm2_prompt_mark)%}$(vcs_char) '
 
 RPROMPT=""
 
