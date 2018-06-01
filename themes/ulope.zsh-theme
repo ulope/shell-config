@@ -29,7 +29,7 @@ function version_info {
 function task_todos {
     TASK_COUNT_RDY=$(task +READY count 2> /dev/null)
     TASK_COUNT_DUE=$(task +READY +DUE count 2> /dev/null)
-    TASK_COUNT_OVRDUE=$(task +READY +OVERDUE count 2> /dev/null)
+    TASK_COUNT_OVRDUE=$(task +READY due.before:today count 2> /dev/null)
     COLOR="027"
     if [[ $TASK_COUNT_OVRDUE -gt 0 ]]; then 
         COLOR="196"
