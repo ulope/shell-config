@@ -27,6 +27,7 @@ function version_info {
 }
 
 function task_todos {
+    TASK_CONTEXT=$(task _get rc.context 2> /dev/null)
     TASK_COUNT_RDY=$(task +READY count 2> /dev/null)
     TASK_COUNT_DUE=$(task +READY +DUE count 2> /dev/null)
     TASK_COUNT_OVRDUE=$(task +READY due.before:today count 2> /dev/null)
@@ -36,7 +37,11 @@ function task_todos {
     elif [[ $TASK_COUNT_DUE -gt 0 ]]; then
         COLOR="208"
     fi
-    [ $(($TASK_COUNT_RDY + $TASK_COUNT_DUE + $TASK_COUNT_OVRDUE)) -gt 0 ] && echo "%{$FG[$COLOR]%} ->> ${TASK_COUNT_RDY}·${TASK_COUNT_DUE}·${TASK_COUNT_OVRDUE}%{$reset_color%}"
+    CONTEXT_MARKER=""
+    if [[ ! -z $TASK_CONTEXT ]]; then
+        CONTEXT_MARKER=" </>"
+    fi
+    [ $(($TASK_COUNT_RDY + $TASK_COUNT_DUE + $TASK_COUNT_OVRDUE)) -gt 0 ] && echo "%{$FG[$COLOR]%} ->> ${TASK_COUNT_RDY}·${TASK_COUNT_DUE}·${TASK_COUNT_OVRDUE}${CONTEXT_MARKER}%{$reset_color%}"
 }
 
 PROMPT='
