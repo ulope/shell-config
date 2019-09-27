@@ -27,10 +27,10 @@ function version_info {
 }
 
 function task_todos {
-    TASK_CONTEXT=$(flock -w .2 ~/.task task _get rc.context 2> /dev/null)
-    TASK_COUNT_RDY=$(flock -w .2 ~/.task task +READY count 2> /dev/null)
-    TASK_COUNT_DUE=$(flock -w .2 ~/.task task +READY +DUE count 2> /dev/null)
-    TASK_COUNT_OVRDUE=$(flock -w .2 ~/.task task +READY due.before:today count 2> /dev/null)
+    TASK_CONTEXT=$(flock -w .2 ~/.task task rc.gc=off _get rc.context 2> /dev/null)
+    TASK_COUNT_RDY=$(flock -w .2 ~/.task task rc.gc=off +READY count 2> /dev/null)
+    TASK_COUNT_DUE=$(flock -w .2 ~/.task task rc.gc=off +READY +DUE count 2> /dev/null)
+    TASK_COUNT_OVRDUE=$(flock -w .2 ~/.task task rc.gc=off +READY due.before:today count 2> /dev/null)
     COLOR="027"
     if [[ $TASK_COUNT_OVRDUE -gt 0 ]]; then 
         COLOR="196"
