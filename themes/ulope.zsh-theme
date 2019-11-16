@@ -27,6 +27,9 @@ function version_info {
 }
 
 function task_todos {
+    if ( ! (( $+commands[task] )) || [[ ! -d ~/.task ]] ); then
+        return 1
+    fi
     TASK_CONTEXT=$(flock -w .2 ~/.task task rc.gc=off _get rc.context 2> /dev/null)
     TASK_COUNT_RDY=$(flock -w .2 ~/.task task rc.gc=off +READY count 2> /dev/null)
     TASK_COUNT_DUE=$(flock -w .2 ~/.task task rc.gc=off +READY +DUE count 2> /dev/null)
